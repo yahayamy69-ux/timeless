@@ -1,0 +1,56 @@
+[
+  {
+    "id": "noir-heritage",
+    "name": "Noir Heritage",
+    "price": 32500,
+    "category": "Classic",
+    "description": "A statement of restraint in polished black and gold. The Noir Heritage is crafted for moments that deserve to last.",
+    "image": "watch1",
+    "variant": ["Leather", "Mesh", "Leather + Gold"]
+  },
+  {
+    "id": "royal-aurum",
+    "name": "Royal Aurum",
+    "price": 45500,
+    "category": "Luxe",
+    "description": "Radiant and refined. Royal Aurum blends sleek details with a luminous gold bezel for an elevated everyday feel.",
+    "image": "watch2",
+    "variant": ["Gold", "Silver", "Two-tone"]
+  },
+  {
+    "id": "obsidian-edge",
+    "name": "Obsidian Edge",
+    "price": 28000,
+    "category": "Sport",
+    "description": "Precision and poise in a bold black case. Obsidian Edge is the athletic luxury piece with sharp lines.",
+    "image": "watch3",
+    "variant": ["Rubber", "Nylon", "Leather"]
+  },
+  {
+    "id": "ivory-classique",
+    "name": "Ivory Classique",
+    "price": 39200,
+    "category": "Classic",
+    "description": "Soft ivory dial and tonal elegance. Ivory Classique is understated luxury with a timeless finish.",
+    "image": "watch4",
+    "variant": ["Ivory", "White", "Gold"]
+  },
+  {
+    "id": "antique-sabre",
+    "name": "Antique Sabre",
+    "price": 51000,
+    "category": "Luxe",
+    "description": "A vintage-inspired design with modern movement. Antique Sabre is for collectors who cherish detail.",
+    "image": "watch1",
+    "variant": ["Brown", "Black", "Gold"]
+  },
+  {
+    "id": "midnight-chronos",
+    "name": "Midnight Chronos",
+    "price": 29800,
+    "category": "Sport",
+    "description": "Dynamic, dark, and dependable. Midnight Chronos brings precision to both city life and midnight affairs.",
+    "image": "watch2",
+    "variant": ["Chrono", "Minimal", "Sport"]
+  }
+]

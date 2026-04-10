@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 260" width="720" height="260">
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#6b5218"/>
+      <stop offset="22%" stop-color="#C9A84C"/>
+      <stop offset="45%" stop-color="#f5df8a"/>
+      <stop offset="68%" stop-color="#C9A84C"/>
+      <stop offset="92%" stop-color="#9a7a30"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="720" height="260" fill="none" />
+  <circle cx="360" cy="120" r="115" fill="none" stroke="#C9A84C" stroke-opacity="0.05" stroke-width="4" />
+  <circle cx="360" cy="120" r="170" fill="none" stroke="#C9A84C" stroke-opacity="0.05" stroke-width="3" />
+
+  <text x="360" y="110" text-anchor="middle" font-family="Cormorant Garamond, serif" font-weight="300" font-size="78" letter-spacing="8" fill="url(#goldGrad)">TIMELESS</text>
+
+  <g transform="translate(360, 155)">
+    <line x1="-170" y1="0" x2="-52" y2="0" stroke="#C9A84C" stroke-width="1" stroke-opacity="0.35" />
+    <circle cx="-42" cy="0" r="3" fill="#C9A84C" opacity="0.8" />
+    <text x="0" y="4" text-anchor="middle" font-family="Montserrat, sans-serif" font-weight="200" font-size="24" letter-spacing="14" fill="#C9A84C">BY EMJAY</text>
+    <circle cx="42" cy="0" r="3" fill="#C9A84C" opacity="0.8" />
+    <line x1="52" y1="0" x2="170" y2="0" stroke="#C9A84C" stroke-width="1" stroke-opacity="0.35" />
+  </g>
+
+  <g transform="translate(360, 190)">
+    <polygon points="-22,0 -14,8 0,0 -14,-8" fill="none" stroke="#C9A84C" stroke-width="1" opacity="0.8" />
+    <polygon points="22,0 14,8 0,0 14,-8" fill="none" stroke="#C9A84C" stroke-width="1" opacity="0.8" />
+  </g>
+
+  <text x="360" y="215" text-anchor="middle" font-family="Cormorant Garamond, serif" font-weight="300" font-size="20" font-style="italic" letter-spacing="0.15em" fill="#8A7A56">Time never looked this good on you.</text>
+</svg>
