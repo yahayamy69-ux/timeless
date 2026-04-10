@@ -7,7 +7,7 @@ function WhatsappBanner() {
           <p className="mt-3 max-w-xl text-sm leading-7 text-[#0A0A0A]/80">
             Stay first in line for new introductions, private drops, and personalised service. We are also live on Google Business for quick discovery.
           </p>
-          <p className="mt-3 text-sm text-[#0A0A0A]/80">Contact: 08166394988 | timelessbyemjay@gmail.com | Snapchat: @byemjay</p>
+          <p className="mt-3 text-sm text-[#0A0A0A]/80">Contact: 08166394988 | timelessbyemjay@gmail.com</p>
         </div>
         <a
           href="https://wa.me/2348166394988"
