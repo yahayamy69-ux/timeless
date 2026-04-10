@@ -10,7 +10,7 @@ function SocialProof() {
           <div className="text-xs uppercase tracking-[0.35em] text-[#8A7A56]">Social</div>
           <h2 className="mt-3 text-3xl font-serif text-[#080808]">Follow us on Instagram, Snapchat, and WhatsApp</h2>
           <p className="mx-auto mt-4 max-w-2xl text-sm text-[#4A4A4A]">
-            See new launches, private drops, and collection previews on our social channels.
+            See new launches and collection previews on our social channels.
           </p>
         </div>
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">

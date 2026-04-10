@@ -20,7 +20,7 @@ function ProductCard({ product }) {
         <img src={image} alt={product.name} className="h-60 w-full object-cover" />
         <div className="mt-5 space-y-2">
           <div className="text-sm uppercase tracking-[0.35em] text-[#C9A84C]">{product.name}</div>
-          <div className="text-sm uppercase tracking-[0.15em] text-[#0A0A0A]/80">Contact for pricing</div>
+          <div className="text-sm uppercase tracking-[0.15em] text-[#0A0A0A]/80">₦{product.price.toLocaleString()}</div>
         </div>
       </Link>
       <button

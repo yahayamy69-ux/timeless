@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 
 function ClientServices() {
   const [form, setForm] = useState({ name: '', email: '', message: '' });
@@ -12,8 +13,8 @@ function ClientServices() {
   };
 
   return (
-    <section id="client-services" className="bg-[#f4efe6] text-[#111]">
-      <div className="mx-auto max-w-6xl px-6 py-28">
+    <motion.section id="client-services" className="bg-[#f4efe6] border-b border-[#111]/10 text-[#111]">
+      <div className="mx-auto max-w-6xl px-6 py-32">
         <div className="grid gap-16 lg:grid-cols-[1fr_1.05fr] items-start">
           <div className="max-w-xl">
             <div className="text-xs uppercase tracking-[0.35em] text-[#8A7A56]">Client Services</div>
@@ -21,7 +22,7 @@ function ClientServices() {
               A dedicated service line for every inquiry.
             </h2>
             <p className="mt-8 max-w-xl text-lg leading-9 text-[#111]/70">
-              Our team is available to assist you with questions about the collection, availability, and delivery.
+              Our team is available to assist you with questions about the collection and delivery.
             </p>
             <div className="mt-10 space-y-3 text-sm uppercase tracking-[0.35em] text-[#111]/70">
               <div>Secure & confidential inquiries</div>
@@ -106,7 +107,7 @@ function ClientServices() {
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
 

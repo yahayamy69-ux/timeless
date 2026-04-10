@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 function Hero() {
   return (
-    <section className="relative min-h-[100vh] overflow-hidden bg-[#080808] text-white">
+    <section className="relative min-h-[100vh] overflow-hidden bg-[#080808] text-white border-b border-white/10">
       <img
         src={galleryImages[10]}
         alt="Timeless collection"

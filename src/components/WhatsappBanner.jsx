@@ -5,7 +5,7 @@ function WhatsappBanner() {
         <div>
           <div className="text-xs uppercase tracking-[0.35em] text-[#C9A84C]">Get exclusive deals on WhatsApp</div>
           <p className="mt-3 max-w-xl text-sm leading-7 text-[#0A0A0A]/80">
-            Stay first in line for new introductions, private drops, and personalised service. We are also live on Google Business for quick discovery.
+            Stay updated on the collection and discover timely service information through our channel.
           </p>
           <p className="mt-3 text-sm text-[#0A0A0A]/80">Contact: 08166394988 | timelessbyemjay@gmail.com</p>
         </div>
