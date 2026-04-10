@@ -11,14 +11,16 @@ function Checkout() {
   const [showPayment, setShowPayment] = useState(false);
   const [confirmed, setConfirmed] = useState(false);
   const [secondsLeft, setSecondsLeft] = useState(900);
-  const [form, setForm] = useState({ name: '', phone: '', address: '', city: 'Maiduguri' });
+  const [form, setForm] = useState({ name: '', phone: '', address: '', city: '' });
 
   const deliveryFee = subtotal >= 30000 || subtotal === 0 ? 0 : 2500;
   const total = subtotal + deliveryFee;
 
   const orderText = useMemo(() => {
-    const itemList = cart.map((item) => `${item.quantity}x ${item.name} (${item.variant})`).join('%0A');
-    return encodeURIComponent(`Hi Timeless by Emjay, I just placed an order and made payment.%0A%0AName: ${form.name}%0APhone: ${form.phone}%0AAddress: ${form.address}, ${form.city}%0A%0AOrder:%0A${itemList}%0A%0ATotal Paid: ₦${total}`);
+    const itemList = cart.map((item) => `${item.quantity}x ${item.name} (${item.variant})`).join('\n');
+    const addressLine = form.city ? `${form.address}, ${form.city}` : form.address;
+    const message = `Hello Timeless by Emjay, I have placed my order and completed payment.\n\nName: ${form.name}\nPhone: ${form.phone}\nDelivery address: ${addressLine}\n\nOrder details:\n${itemList}\n\nTotal paid: ₦${total}`;
+    return encodeURIComponent(message);
   }, [cart, form, total]);
 
   useEffect(() => {
@@ -40,7 +42,7 @@ function Checkout() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (!form.name || !form.phone || !form.address) return;
+    if (!form.name || !form.phone || !form.address || !form.city) return;
     setStep(2);
   };
 
@@ -131,7 +133,8 @@ function Checkout() {
                     City
                     <input
                       value={form.city}
-                      readOnly
+                      onChange={(e) => setForm({ ...form, city: e.target.value })}
+                      placeholder="Abuja"
                       className="mt-2 w-full border border-[#C9A84C] bg-white px-4 py-3 text-[#0A0A0A] outline-none"
                     />
                   </label>
@@ -203,10 +206,13 @@ function Checkout() {
               <div className="rounded-none border border-white/20 bg-white p-6">
                 <div className="text-sm uppercase tracking-[0.35em] text-[#C9A84C]">Customer</div>
                 <div className="mt-4 space-y-2 text-sm text-[#0A0A0A]/80">
-                  <div>{form.name || 'Name not set'}</div>
-                  <div>{form.phone || 'Phone not set'}</div>
-                  <div>{form.address || 'Address not set'}</div>
-                  <div>{form.city}</div>
+                  {form.name && <div>{form.name}</div>}
+                  {form.phone && <div>{form.phone}</div>}
+                  {form.address && <div>{form.address}</div>}
+                  {form.city && <div>{form.city}</div>}
+                  {!form.name && !form.phone && !form.address && !form.city && (
+                    <div>Enter your details to preview the order summary here.</div>
+                  )}
                 </div>
               </div>
             </aside>
