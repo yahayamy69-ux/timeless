@@ -4,11 +4,14 @@ function SocialProof() {
   const photos = galleryImages.slice(0, 4);
 
   return (
-    <section className="border-b border-white/30 bg-[#C9A84C] px-5 py-16 text-white">
+    <section className="border-b border-white/30 bg-white px-5 py-16 text-[#080808]">
       <div className="mx-auto max-w-6xl">
         <div className="mb-10 text-center">
-          <div className="text-xs uppercase tracking-[0.35em] text-white/80">Social Proof</div>
-          <h2 className="mt-3 text-3xl font-serif text-white">Tag @timelessbyemjay on Instagram</h2>
+          <div className="text-xs uppercase tracking-[0.35em] text-[#8A7A56]">Social</div>
+          <h2 className="mt-3 text-3xl font-serif text-[#080808]">Follow us on Instagram, Snapchat, and WhatsApp</h2>
+          <p className="mx-auto mt-4 max-w-2xl text-sm text-[#4A4A4A]">
+            See new launches, private drops, and collection previews on our social channels.
+          </p>
         </div>
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
           {photos.map((src, index) => (

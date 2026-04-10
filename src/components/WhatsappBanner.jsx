@@ -1,7 +1,7 @@
 function WhatsappBanner() {
   return (
-    <section className="border-t border-white/20 bg-[#C9A84C] px-5 py-10 text-white">
-      <div className="mx-auto flex max-w-6xl flex-col gap-6 rounded-none border border-white/20 bg-white px-6 py-8 text-[#0A0A0A] lg:flex-row lg:items-center lg:justify-between">
+    <section className="border-t border-white/20 bg-[#111] px-5 py-10 text-white">
+      <div className="mx-auto flex max-w-6xl flex-col gap-6 rounded-none border border-white/20 bg-white px-6 py-8 text-[#080808] lg:flex-row lg:items-center lg:justify-between">
         <div>
           <div className="text-xs uppercase tracking-[0.35em] text-[#C9A84C]">Get exclusive deals on WhatsApp</div>
           <p className="mt-3 max-w-xl text-sm leading-7 text-[#0A0A0A]/80">

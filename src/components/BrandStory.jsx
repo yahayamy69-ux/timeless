@@ -2,20 +2,23 @@ import { motion } from 'framer-motion';
 
 function BrandStory() {
   return (
-    <section id="story" className="border-b border-white/30 bg-[#C9A84C] px-5 py-16 text-white">
+    <section id="story" className="border-b border-white/20 bg-white px-5 py-16 text-[#080808]">
       <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[1.3fr_0.9fr]">
         <div className="space-y-6">
-          <div className="text-xs uppercase tracking-[0.35em] text-white/80">More than a watch.</div>
-          <h2 className="text-4xl font-serif leading-tight text-white">A story of craftsmanship and elegant restraint.</h2>
-          <p className="max-w-xl text-sm leading-7 text-white/80">
-            Timeless by Emjay is built on the belief that every timepiece should be a memory in motion. Based in Abuja, we bring refined finishes and polished details to collectors who desire luxury with purpose.
+          <div className="text-xs uppercase tracking-[0.35em] text-[#8A7A56]">More than a watch.</div>
+          <h2 className="text-4xl font-serif leading-tight text-[#080808]">A story of craftsmanship and elegant restraint.</h2>
+          <p className="max-w-xl text-sm leading-7 text-[#4A4A4A]">
+            Timeless by Emjay blends premium craftsmanship with personal service. Every watch is handpicked for the modern collector who values elegance, clarity, and lasting memory.
           </p>
-          <button className="rounded-none border border-white px-8 py-3 text-sm uppercase tracking-[0.35em] text-white transition hover:bg-white hover:text-[#C9A84C]">
+          <p className="max-w-xl text-sm leading-7 text-[#4A4A4A]">
+            With a focus on limited drops and private appointments, we make sure each piece feels intentional, rare, and ready for the moment you wear it.
+          </p>
+          <button className="rounded-none border border-[#C9A84C] bg-[#F9F7EE] px-8 py-3 text-sm uppercase tracking-[0.35em] text-[#080808] transition hover:bg-[#E2D998] hover:text-[#080808]">
             Discover Our Story
           </button>
         </div>
         <motion.div
-          className="relative flex items-center justify-center border border-white/20 bg-white p-10"
+          className="relative flex items-center justify-center border border-[#E2C974]/20 bg-[#F9F7EE] p-10"
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}

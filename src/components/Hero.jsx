@@ -4,8 +4,7 @@ import LogoMark from './LogoMark.jsx';
 
 function Hero() {
   return (
-    <section className="relative flex min-h-[92vh] flex-col items-center justify-center overflow-hidden px-5 text-center bg-[#C9A84C] text-white">
-      <div className="absolute left-0 top-0 h-1 w-full bg-gradient-to-r from-white/40 via-white to-white/40" />
+    <section className="relative flex min-h-[92vh] flex-col items-center justify-center overflow-hidden px-5 text-center bg-[#080808] text-white">
       <div className="absolute inset-x-0 bottom-20 mx-auto h-14 w-14 rounded-full border border-white/25" />
       <div className="relative z-10 max-w-3xl">
         <LogoMark />

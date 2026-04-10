@@ -7,11 +7,11 @@ function PhotoGrid() {
   }, []);
 
   return (
-    <section className="border-t border-white/30 bg-[#C9A84C] px-5 py-16 text-white">
+    <section className="border-t border-white/30 bg-white px-5 py-16 text-[#080808]">
       <div className="mx-auto max-w-6xl">
         <div className="mb-10 text-center">
-          <div className="text-xs uppercase tracking-[0.35em] text-white/80">Featured imagery</div>
-          <h2 className="mt-3 text-3xl font-serif text-white">A visual preview of our first collection.</h2>
+          <div className="text-xs uppercase tracking-[0.35em] text-[#8A7A56]">Featured imagery</div>
+          <h2 className="mt-3 text-3xl font-serif text-[#080808]">A visual preview of our first collection.</h2>
         </div>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {photos.map((src, index) => (

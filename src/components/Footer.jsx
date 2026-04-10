@@ -10,7 +10,7 @@ function Footer() {
   ];
 
   return (
-    <footer className="border-t border-white/20 bg-[#C9A84C] px-5 py-12 text-center text-white">
+    <footer className="border-t border-white/10 bg-[#111] px-5 py-12 text-center text-white">
       <div className="mx-auto max-w-4xl">
         <LogoMark compact />
         <div className="mt-10 flex flex-wrap items-center justify-center gap-6 text-[0.75rem] uppercase tracking-[0.35em] text-white/80">

@@ -12,14 +12,14 @@ html, body {
 }
 
 body {
-  background: #C9A84C;
+  background: #080808;
   font-family: 'Inter', sans-serif;
   color: #ffffff;
 }
 
 ::selection {
-  background: rgba(255, 255, 255, 0.35);
-  color: #0A0A0A;
+  background: rgba(201, 168, 76, 0.25);
+  color: #ffffff;
 }
 
 button, input, textarea, select {
