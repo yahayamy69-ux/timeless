@@ -1,10 +1,15 @@
-import { Link, useParams } from 'react-router-dom';
+import { useState } from 'react';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useCart } from '../context/CartContext.jsx';
 import products from '../data/products.json';
 import { imageMap } from '../data/imageMap.js';
 
 function Product() {
   const { id } = useParams();
+  const navigate = useNavigate();
+  const { addItem } = useCart();
   const product = products.find((item) => item.id === id);
+  const [variant, setVariant] = useState(product?.variant[0] || '');
   const image = imageMap[product?.image] || '';
 
   if (!product) {
@@ -20,28 +25,69 @@ function Product() {
     );
   }
 
+  const handleAdd = () => {
+    addItem(product, variant);
+  };
+
+  const handleCheckout = () => {
+    addItem(product, variant);
+    navigate('/checkout');
+  };
+
   return (
-    <section className="relative min-h-[100vh] bg-[#121212] text-white">
-      <img src={image} alt={product.name} className="absolute inset-0 h-full w-full object-cover opacity-60" />
-      <div className="absolute inset-0 bg-[#121212]/70" />
-      <div className="relative mx-auto flex min-h-[100vh] max-w-6xl flex-col justify-center px-6 py-24">
-        <p className="text-xs uppercase tracking-[0.35em] text-[#D2C08B]/60">{product.category}</p>
-        <h1 className="mt-6 text-[4rem] font-serif uppercase tracking-[-0.04em] leading-[0.95] sm:text-[5.2rem]">
-          {product.name}
-        </h1>
-        <p className="mt-10 max-w-3xl text-lg leading-9 text-white/70">
-          {product.description}
-        </p>
-        <p className="mt-10 max-w-2xl text-sm uppercase tracking-[0.35em] text-[#D2C08B]/70">
-          Private appointments only. Contact us for pricing and availability.
-        </p>
-        <div className="mt-14 flex flex-wrap gap-6 text-sm uppercase tracking-[0.35em] text-white/80">
-          <a href="https://wa.me/2348166394988" className="underline transition hover:text-[#D2C08B]">
-            Request details
-          </a>
-          <Link to="/shop" className="underline transition hover:text-[#D2C08B]">
-            All watches
-          </Link>
+    <section className="bg-[#f4efe6] text-[#111]">
+      <div className="mx-auto max-w-6xl px-6 py-20">
+        <div className="grid gap-16 lg:grid-cols-[1.2fr_0.8fr]">
+          <div className="overflow-hidden rounded-none">
+            <img src={image} alt={product.name} className="h-[320px] w-full object-cover sm:h-[520px]" />
+          </div>
+          <div className="flex flex-col justify-center gap-10">
+            <div>
+              <p className="text-xs uppercase tracking-[0.35em] text-[#8A7A56]">{product.brand} · {product.category}</p>
+              <h1 className="mt-4 text-[2.6rem] font-serif uppercase tracking-[-0.04em] leading-[1.0] sm:text-[4.2rem] lg:text-[4.8rem]">
+                {product.name}
+              </h1>
+              <div className="mt-6 text-[2rem] uppercase tracking-[0.35em] text-[#D2C08B]">
+                ₦{product.price.toLocaleString()}
+              </div>
+            </div>
+            <p className="max-w-xl text-lg leading-9 text-[#111]/70">
+              {product.description}
+            </p>
+            <div className="space-y-8">
+              <div>
+                <div className="text-xs uppercase tracking-[0.35em] text-[#8A7A56]">Variant</div>
+                <select
+                  value={variant}
+                  onChange={(e) => setVariant(e.target.value)}
+                  className="mt-4 w-full rounded-none border border-[#111]/10 bg-transparent px-4 py-3 text-[#111] outline-none"
+                >
+                  {product.variant.map((option) => (
+                    <option key={option} value={option}>{option}</option>
+                  ))}
+                </select>
+              </div>
+              <div className="flex flex-wrap gap-4 text-sm uppercase tracking-[0.35em] text-[#111]/80">
+                <button
+                  type="button"
+                  onClick={handleAdd}
+                  className="rounded-none border border-[#111]/10 bg-[#111] px-6 py-4 text-white transition hover:bg-[#333]"
+                >
+                  Add to cart
+                </button>
+                <button
+                  type="button"
+                  onClick={handleCheckout}
+                  className="rounded-none border border-[#D2C08B] px-6 py-4 text-sm uppercase tracking-[0.35em] text-[#111] transition hover:bg-[#D2C08B]/10"
+                >
+                  Checkout
+                </button>
+              </div>
+            </div>
+            <p className="text-sm uppercase tracking-[0.35em] text-[#111]/60">
+              Available now · Free delivery on orders above ₦30,000
+            </p>
+          </div>
         </div>
       </div>
     </section>

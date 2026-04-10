@@ -14,11 +14,11 @@ function ClientServices() {
 
   return (
     <motion.section id="client-services" className="bg-[#f4efe6] border-b border-[#111]/10 text-[#111]">
-      <div className="mx-auto max-w-6xl px-6 py-32">
-        <div className="grid gap-16 lg:grid-cols-[1fr_1.05fr] items-start">
+      <div className="mx-auto max-w-6xl px-6 py-20 sm:py-24">
+        <div className="grid gap-12 lg:grid-cols-[1fr_1.05fr] items-start">
           <div className="max-w-xl">
             <div className="text-xs uppercase tracking-[0.35em] text-[#8A7A56]">Client Services</div>
-            <h2 className="mt-6 text-[4rem] font-serif uppercase tracking-[-0.04em] leading-[0.95] sm:text-[5.2rem]">
+            <h2 className="mt-6 text-[2.4rem] font-serif uppercase tracking-[-0.04em] leading-[1.02] sm:text-[3.8rem] lg:text-[5rem]">
               A dedicated service line for every inquiry.
             </h2>
             <p className="mt-8 max-w-xl text-lg leading-9 text-[#111]/70">

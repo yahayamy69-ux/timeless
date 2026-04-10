@@ -35,9 +35,9 @@ function Shop() {
 
   return (
     <section className="bg-[#f4efe6] text-[#111]">
-      <div className="mx-auto max-w-6xl px-6 py-20">
+      <div className="mx-auto max-w-6xl px-6 py-16 sm:py-20">
         <span className="text-xs uppercase tracking-[0.35em] text-[#8A7A56]">Shop</span>
-        <h1 className="mt-6 text-[3.2rem] font-serif uppercase tracking-[-0.04em] leading-[0.95] sm:text-[4.8rem] lg:text-[5.2rem]">
+        <h1 className="mt-6 text-[2.8rem] font-serif uppercase tracking-[-0.04em] leading-[1.0] sm:text-[4rem] lg:text-[5.2rem]">
           A curated selection of watches.
         </h1>
         <p className="mt-10 max-w-3xl text-lg leading-9 text-[#111]/70">
@@ -89,7 +89,7 @@ function Shop() {
           {filtered.length} watch{filtered.length === 1 ? '' : 'es'} available
         </div>
 
-        <div className="mt-16 grid gap-16 lg:grid-cols-2">
+        <div className="mt-14 grid gap-10 lg:grid-cols-2">
           {filtered.map((product) => (
             <article key={product.id} className="overflow-hidden">
               <Link to={`/product/${product.id}`} className="block overflow-hidden">
