@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -6,61 +8,36 @@
   color-scheme: dark;
 }
 
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 html, body {
   margin: 0;
   min-height: 100%;
 }
 
 body {
-  background: #080808;
+  background: #050505;
   font-family: 'Inter', sans-serif;
   color: #ffffff;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Cormorant Garamond', serif;
+}
+
 ::selection {
-  background: rgba(201, 168, 76, 0.25);
+  background: rgba(201, 168, 76, 0.18);
   color: #ffffff;
 }
 
 button, input, textarea, select {
   font: inherit;
-}
-
-.square-line {
-  border: none;
-}
-
-.hero-line {
-  height: 2px;
-  width: 90px;
-  animation: pulse 1.8s ease-in-out infinite;
-  background: linear-gradient(90deg, rgba(201,168,76,0.1), rgba(201,168,76,1), rgba(201,168,76,0.1));
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 0.3; transform: scaleX(1); }
-  50% { opacity: 1; transform: scaleX(1.05); }
-}
-
-.marquee {
-  display: inline-block;
-  white-space: nowrap;
-  animation: marquee 26s linear infinite;
-}
-
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-100%); }
-}
-
-.clock-hand {
-  transform-origin: bottom center;
-  animation: rotate-clock 32s linear infinite;
-}
-
-@keyframes rotate-clock {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
 }
 
 .no-scroll {

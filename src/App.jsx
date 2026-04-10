@@ -12,7 +12,7 @@ function App() {
   return (
     <CartProvider>
       <BrowserRouter>
-        <div className="min-h-screen bg-[#111] text-white">
+        <div className="min-h-screen bg-[#050505] text-white">
           <Navbar />
           <CartDrawer />
           <main className="relative">

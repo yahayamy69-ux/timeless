@@ -1,25 +1,31 @@
-import products from '../data/products.json';
-import ProductCard from './ProductCard.jsx';
+import { motion } from 'framer-motion';
+import { imageMap } from '../data/imageMap.js';
 
 function FeaturedCollection() {
-  const featured = products.slice(0, 3);
-
   return (
-    <section className="border-t border-b border-white/30 bg-white px-5 py-16 text-[#0A0A0A]">
-      <div className="mx-auto max-w-6xl">
-        <div className="mb-10 text-center">
-          <h2 className="text-3xl uppercase tracking-[0.25em] text-[#C9A84C] font-serif">
-            The Collection
+    <section className="relative min-h-[100vh] overflow-hidden bg-[#050505] text-white">
+      <img
+        src={imageMap.watch2}
+        alt="Collection highlight"
+        className="absolute inset-0 h-full w-full object-cover object-center opacity-70"
+      />
+      <div className="absolute inset-0 bg-black/45" />
+      <div className="relative mx-auto flex min-h-[100vh] max-w-6xl items-center px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.35 }}
+          transition={{ duration: 1.1, ease: 'easeOut' }}
+          className="max-w-3xl"
+        >
+          <span className="text-xs uppercase tracking-[0.35em] text-[#D2C08B]/60">A quiet edit</span>
+          <h2 className="mt-6 text-[3.5rem] font-serif uppercase tracking-[-0.04em] leading-[0.9] sm:text-[5rem]">
+            The collection is restrained and rare.
           </h2>
-          <p className="mt-4 max-w-2xl mx-auto text-sm tracking-[0.2em] text-[#0A0A0A]/70">
-            Luxury timepieces curated for every moment.
+          <p className="mt-10 max-w-xl text-lg leading-9 text-white/65">
+            Six appointments of watchmaking, offered with private access and deliberate calm.
           </p>
-        </div>
-        <div className="grid gap-6 md:grid-cols-3">
-          {featured.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

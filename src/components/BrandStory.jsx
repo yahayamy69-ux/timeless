@@ -2,34 +2,22 @@ import { motion } from 'framer-motion';
 
 function BrandStory() {
   return (
-    <section id="story" className="border-b border-white/20 bg-white px-5 py-16 text-[#080808]">
-      <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[1.3fr_0.9fr]">
-        <div className="space-y-6">
-          <div className="text-xs uppercase tracking-[0.35em] text-[#8A7A56]">More than a watch.</div>
-          <h2 className="text-4xl font-serif leading-tight text-[#080808]">A story of craftsmanship and elegant restraint.</h2>
-          <p className="max-w-xl text-sm leading-7 text-[#4A4A4A]">
-            Timeless by Emjay blends premium craftsmanship with personal service. Every watch is handpicked for the modern collector who values elegance, clarity, and lasting memory.
-          </p>
-          <p className="max-w-xl text-sm leading-7 text-[#4A4A4A]">
-            With a focus on limited drops and private appointments, we make sure each piece feels intentional, rare, and ready for the moment you wear it.
-          </p>
-          <button className="rounded-none border border-[#C9A84C] bg-[#F9F7EE] px-8 py-3 text-sm uppercase tracking-[0.35em] text-[#080808] transition hover:bg-[#E2D998] hover:text-[#080808]">
-            Discover Our Story
-          </button>
-        </div>
+    <section id="story" className="relative min-h-[100vh] bg-[#080808] text-white">
+      <div className="relative mx-auto flex min-h-[100vh] max-w-6xl items-center px-6">
         <motion.div
-          className="relative flex items-center justify-center border border-[#E2C974]/20 bg-[#F9F7EE] p-10"
           initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ duration: 1.1, ease: 'easeOut' }}
+          className="max-w-3xl"
         >
-          <div className="relative h-80 w-80 rounded-none border border-[#C9A84C]">
-            <div className="absolute inset-0 rounded-none border border-[#C9A84C]/30" />
-            <div className="absolute left-1/2 top-1/2 h-52 w-52 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#C9A84C]/40" />
-            <div className="absolute left-1/2 top-1/2 h-32 w-32 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#C9A84C]/40" />
-            <div className="absolute left-1/2 top-1/2 h-2 w-24 bg-[#C9A84C] transform -translate-x-1/2 translate-y-[-1px]" />
-            <div className="absolute left-1/2 top-1/2 h-28 w-1 bg-[#C9A84C] clock-hand" />
-          </div>
+          <span className="text-xs uppercase tracking-[0.35em] text-[#D2C08B]/60">Heritage</span>
+          <h2 className="mt-6 text-[4rem] font-serif uppercase tracking-[-0.04em] leading-[0.95] sm:text-[5.2rem]">
+            Quietly curated, intentionally framed.
+          </h2>
+          <p className="mt-10 max-w-xl text-lg leading-9 text-white/65">
+            The collection is offered through private service, selected for an audience that values restraint, provenance and lasting presence.
+          </p>
         </motion.div>
       </div>
     </section>

@@ -1,35 +1,27 @@
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
 import LogoMark from './LogoMark.jsx';
 
 function Hero() {
   return (
-    <section className="relative flex min-h-[92vh] flex-col items-center justify-center overflow-hidden px-5 text-center bg-[#111] text-white">
-      <div className="absolute inset-x-0 bottom-20 mx-auto h-14 w-14 rounded-full border border-white/25" />
-      <div className="relative z-10 max-w-3xl">
-        <LogoMark />
-        <div className="mt-10 text-sm uppercase tracking-[0.35em] text-white/90">
-          Curated timepieces for the refined.
-        </div>
-        <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-          <Link
-            to="/shop"
-            className="rounded-none bg-white px-8 py-3 text-sm uppercase tracking-[0.35em] text-[#C9A84C] transition hover:bg-[#F5F0E8]"
-          >
-            Shop the Collection
-          </Link>
-          <a
-            href="#story"
-            className="rounded-none border border-white px-8 py-3 text-sm uppercase tracking-[0.35em] text-white transition hover:bg-white hover:text-[#C9A84C]"
-          >
-            Our Story
-          </a>
-        </div>
+    <section className="relative min-h-[100vh] overflow-hidden bg-[#080808] text-white">
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.07),_transparent_45%)]" />
+      </div>
+      <div className="relative mx-auto flex min-h-[100vh] max-w-6xl flex-col items-center justify-center px-6 text-center">
         <motion.div
-          className="mx-auto mt-14 h-0.5 w-24 rounded-full bg-white/75"
-          animate={{ opacity: [0.4, 1, 0.4] }}
-          transition={{ duration: 1.8, repeat: Infinity }}
-        />
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2, ease: 'easeOut' }}
+          className="space-y-10"
+        >
+          <div className="text-[0.8rem] uppercase tracking-[0.4em] text-white/70">Timeless by Emjay</div>
+          <h1 className="max-w-3xl text-[4.2rem] leading-[1.05] font-serif uppercase tracking-[-0.04em] text-white sm:text-[5rem] md:text-[6rem]">
+            Heritage timepieces. Quiet luxury.
+          </h1>
+          <p className="mx-auto max-w-2xl text-xl leading-[1.6] text-white/70">
+            A restrained collection of wristwear designed for moments that last.
+          </p>
+        </motion.div>
       </div>
     </section>
   );
