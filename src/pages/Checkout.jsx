@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
+import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext.jsx';
 
@@ -6,10 +7,11 @@ function Checkout() {
   const { cart, subtotal } = useCart();
   const navigate = useNavigate();
   const [step, setStep] = useState(1);
+  const [showWarning, setShowWarning] = useState(false);
   const [showPayment, setShowPayment] = useState(false);
   const [confirmed, setConfirmed] = useState(false);
   const [secondsLeft, setSecondsLeft] = useState(900);
-  const [form, setForm] = useState({ name: '', phone: '', address: '', city: 'Abuja' });
+  const [form, setForm] = useState({ name: '', phone: '', address: '', city: 'Maiduguri' });
 
   const deliveryFee = subtotal >= 30000 || subtotal === 0 ? 0 : 2500;
   const total = subtotal + deliveryFee;
@@ -18,6 +20,10 @@ function Checkout() {
     const itemList = cart.map((item) => `${item.quantity}x ${item.name} (${item.variant})`).join('%0A');
     return encodeURIComponent(`Hi Timeless by Emjay, I just placed an order and made payment.%0A%0AName: ${form.name}%0APhone: ${form.phone}%0AAddress: ${form.address}, ${form.city}%0A%0AOrder:%0A${itemList}%0A%0ATotal Paid: ₦${total}`);
   }, [cart, form, total]);
+
+  useEffect(() => {
+    setShowWarning(true);
+  }, []);
 
   useEffect(() => {
     if (!showPayment) return undefined;
@@ -64,9 +70,22 @@ function Checkout() {
   return (
     <div className="relative bg-white px-5 py-16 text-[#0A0A0A]">
       <div className="mx-auto max-w-6xl space-y-10">
-        <div className="border-b border-white/20 pb-8">
+        <div className="space-y-6 border-b border-white/20 pb-8">
           <div className="text-xs uppercase tracking-[0.35em] text-[#C9A84C]">Checkout</div>
           <h1 className="mt-3 text-4xl font-serif text-[#0A0A0A]">Complete your order</h1>
+          {showWarning && (
+            <motion.div
+              initial={{ opacity: 0, y: -16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, type: 'spring', stiffness: 130 }}
+              className="rounded-none border-l-4 border-[#C9A84C] bg-[#F9F1D0] p-4 text-sm text-[#0A0A0A]"
+            >
+              <strong className="uppercase tracking-[0.35em] text-[#C9A84C]">Warning</strong>
+              <p className="mt-2 leading-6">
+                Check your delivery details before confirming. Once payment is made, orders are final.
+              </p>
+            </motion.div>
+          )}
         </div>
 
         {confirmed ? (
@@ -116,9 +135,14 @@ function Checkout() {
                       className="mt-2 w-full border border-[#C9A84C] bg-white px-4 py-3 text-[#0A0A0A] outline-none"
                     />
                   </label>
-                  <button type="submit" className="rounded-none bg-[#C9A84C] px-6 py-4 text-sm uppercase tracking-[0.35em] text-black transition hover:bg-[#f5df8a]">
-                    Continue to summary
-                  </button>
+                  <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                    <button type="button" onClick={() => navigate('/shop')} className="rounded-none border border-[#C9A84C] px-6 py-4 text-sm uppercase tracking-[0.35em] text-[#C9A84C] transition hover:bg-[#f5df8a] hover:text-black">
+                      Cancel order
+                    </button>
+                    <button type="submit" className="rounded-none bg-[#C9A84C] px-6 py-4 text-sm uppercase tracking-[0.35em] text-black transition hover:bg-[#f5df8a]">
+                      Continue to summary
+                    </button>
+                  </div>
                 </form>
               )}
 
@@ -150,13 +174,22 @@ function Checkout() {
                       <strong>₦{total}</strong>
                     </div>
                   </div>
-                  <button
-                    type="button"
-                    onClick={handleConfirm}
-                    className="mt-8 rounded-none bg-[#C9A84C] px-6 py-4 text-sm uppercase tracking-[0.35em] text-black transition hover:bg-[#f5df8a]"
-                  >
-                    Confirm &amp; See Payment Details
-                  </button>
+                  <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                    <button
+                      type="button"
+                      onClick={() => navigate('/shop')}
+                      className="rounded-none border border-[#C9A84C] px-6 py-4 text-sm uppercase tracking-[0.35em] text-[#C9A84C] transition hover:bg-[#f5df8a] hover:text-black"
+                    >
+                      Cancel order
+                    </button>
+                    <button
+                      type="button"
+                      onClick={handleConfirm}
+                      className="rounded-none bg-[#C9A84C] px-6 py-4 text-sm uppercase tracking-[0.35em] text-black transition hover:bg-[#f5df8a]"
+                    >
+                      Confirm &amp; See Payment Details
+                    </button>
+                  </div>
                 </div>
               )}
             </div>
@@ -182,7 +215,7 @@ function Checkout() {
       </div>
 
       {showPayment && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-5 py-10">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#111]/70 px-5 py-10">
           <div className="w-full max-w-3xl border border-[#C9A84C] bg-white p-10">
             <div className="text-xs uppercase tracking-[0.35em] text-[#C9A84C]">Complete Your Payment</div>
             <h2 className="mt-4 text-4xl font-serif text-[#0A0A0A]">Complete Your Payment</h2>
@@ -211,13 +244,22 @@ function Checkout() {
               <span>This order is reserved for</span>
               <span>{formatTime(secondsLeft)}</span>
             </div>
-            <button
-              type="button"
-              onClick={handlePaid}
-              className="mt-8 w-full rounded-none bg-[#C9A84C] px-6 py-4 text-sm uppercase tracking-[0.35em] text-black transition hover:bg-[#f5df8a]"
-            >
-              I Have Paid — Confirm My Order
-            </button>
+            <div className="mt-8 grid gap-3 sm:grid-cols-[1fr_auto]">
+              <button
+                type="button"
+                onClick={() => navigate('/shop')}
+                className="rounded-none border border-[#C9A84C] px-6 py-4 text-sm uppercase tracking-[0.35em] text-[#C9A84C] transition hover:bg-[#f5df8a] hover:text-black"
+              >
+                Cancel and return
+              </button>
+              <button
+                type="button"
+                onClick={handlePaid}
+                className="rounded-none bg-[#C9A84C] px-6 py-4 text-sm uppercase tracking-[0.35em] text-black transition hover:bg-[#f5df8a]"
+              >
+                I Have Paid — Confirm My Order
+              </button>
+            </div>
           </div>
         </div>
       )}
