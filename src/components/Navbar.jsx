@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext.jsx';
 import LogoMark from './LogoMark.jsx';
@@ -6,25 +6,37 @@ import LogoMark from './LogoMark.jsx';
 const navItems = [
   { title: 'Home', to: '/', type: 'link' },
   { title: 'Shop', to: '/shop', type: 'link' },
-  { title: 'Contact', to: '/#contact', type: 'anchor' },
+  { title: 'Collections', to: '/#collections', type: 'anchor' },
 ];
 
 function Navbar() {
   const { cartCount, toggleCart } = useCart();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const lastScrollY = useRef(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 30);
+      const currentY = window.scrollY;
+      setScrolled(currentY > 30);
+
+      if (currentY > lastScrollY.current && currentY > 80) {
+        setHidden(true);
+      } else if (currentY < lastScrollY.current) {
+        setHidden(false);
+      }
+
+      lastScrollY.current = currentY;
     };
+
     handleScroll();
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
-    <header className={`sticky top-0 z-50 border-b ${scrolled ? 'border-white/10 bg-[#050505]/95 backdrop-blur-xl' : 'border-transparent bg-transparent'} text-white transition-colors duration-500`}>
+    <header className={`sticky top-0 z-50 transform border-b ${scrolled ? 'border-white/10 bg-[#050505]/95 backdrop-blur-xl' : 'border-transparent bg-transparent'} ${hidden ? '-translate-y-full' : 'translate-y-0'} text-white transition duration-300 ease-out`}>
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-4">
         <Link to="/" className="flex items-center gap-3">
           <div className="text-[0.95rem] font-serif leading-none text-white tracking-[0.18em]">TIMELESS</div>
