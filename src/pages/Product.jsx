@@ -1,31 +1,18 @@
-import { useMemo, useState } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import products from '../data/products.json';
-import { useCart } from '../context/CartContext.jsx';
 import { imageMap } from '../data/imageMap.js';
 
 function Product() {
   const { id } = useParams();
-  const navigate = useNavigate();
-  const { addItem } = useCart();
   const product = products.find((item) => item.id === id);
-  const [variant, setVariant] = useState(product?.variant[0] || '');
-
   const image = imageMap[product?.image] || '';
-
-  const handleAdd = () => {
-    if (product) {
-      addItem(product, variant);
-      navigate('/shop');
-    }
-  };
 
   if (!product) {
     return (
-      <section className="bg-white px-5 py-20 text-center text-[#0A0A0A]">
-        <div className="mx-auto max-w-3xl border border-white/20 bg-white p-10">
-          <p className="text-lg uppercase tracking-[0.35em] text-[#C9A84C]">Product not found</p>
-          <Link to="/shop" className="mt-6 inline-block rounded-none border border-[#C9A84C] px-6 py-3 text-sm uppercase tracking-[0.35em] text-[#C9A84C] transition hover:bg-[#C9A84C] hover:text-black">
+      <section className="bg-[#f4efe6] px-5 py-20 text-center text-[#111]">
+        <div className="mx-auto max-w-3xl">
+          <p className="text-sm uppercase tracking-[0.35em] text-[#8A7A56]">Product not found</p>
+          <Link to="/shop" className="mt-6 inline-block text-sm uppercase tracking-[0.35em] text-[#111] underline">
             Return to Shop
           </Link>
         </div>
@@ -34,56 +21,27 @@ function Product() {
   }
 
   return (
-    <section className="bg-white px-5 py-16">
-      <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[0.95fr_1.05fr]">
-        <div className="border border-white/20 bg-white p-6">
-          <img src={image} alt={product.name} className="w-full object-cover" />
-        </div>
-        <div className="space-y-6">
-          <Link to="/shop" className="text-sm uppercase tracking-[0.35em] text-[#C9A84C]">Back to shop</Link>
-          <div className="space-y-3">
-            <div className="text-xs uppercase tracking-[0.35em] text-[#C9A84C]">{product.category}</div>
-            <h1 className="text-4xl font-serif text-[#0A0A0A]">{product.name}</h1>
-            <p className="text-sm uppercase tracking-[0.2em] text-[#0A0A0A]/80">Contact for pricing</p>
-          </div>
-          <p className="max-w-xl text-sm leading-7 text-[#0A0A0A]/80">{product.description}</p>
-          <div className="grid gap-4 sm:grid-cols-2">
-            <label className="border border-[#C9A84C] bg-white p-4 text-sm uppercase tracking-[0.25em] text-[#0A0A0A]">
-              Variant
-              <select
-                value={variant}
-                onChange={(e) => setVariant(e.target.value)}
-                className="mt-3 w-full border-none bg-transparent text-[#0A0A0A] outline-none"
-              >
-                {product.variant.map((option) => (
-                  <option key={option} value={option}>{option}</option>
-                ))}
-              </select>
-            </label>
-            <div className="border border-[#C9A84C] bg-white p-4 text-sm uppercase tracking-[0.25em] text-[#0A0A0A]">
-              Delivery
-              <p className="mt-3 text-base text-[#0A0A0A]/80">Free delivery on orders above ₦30,000</p>
-            </div>
-          </div>
-          <div className="flex flex-col gap-4 sm:flex-row">
-            <button
-              type="button"
-              onClick={handleAdd}
-              className="rounded-none bg-[#C9A84C] px-6 py-4 text-sm uppercase tracking-[0.35em] text-black transition hover:bg-[#f5df8a]"
-            >
-              Add to Cart
-            </button>
-            <button
-              type="button"
-              onClick={() => {
-                addItem(product, variant);
-                navigate('/checkout');
-              }}
-              className="rounded-none border border-[#C9A84C] px-6 py-4 text-sm uppercase tracking-[0.35em] text-[#C9A84C] transition hover:bg-[#C9A84C] hover:text-black"
-            >
-              Buy Now
-            </button>
-          </div>
+    <section className="relative min-h-[100vh] bg-[#121212] text-white">
+      <img src={image} alt={product.name} className="absolute inset-0 h-full w-full object-cover opacity-60" />
+      <div className="absolute inset-0 bg-[#121212]/70" />
+      <div className="relative mx-auto flex min-h-[100vh] max-w-6xl flex-col justify-center px-6 py-24">
+        <p className="text-xs uppercase tracking-[0.35em] text-[#D2C08B]/60">{product.category}</p>
+        <h1 className="mt-6 text-[4rem] font-serif uppercase tracking-[-0.04em] leading-[0.95] sm:text-[5.2rem]">
+          {product.name}
+        </h1>
+        <p className="mt-10 max-w-3xl text-lg leading-9 text-white/70">
+          {product.description}
+        </p>
+        <p className="mt-10 max-w-2xl text-sm uppercase tracking-[0.35em] text-[#D2C08B]/70">
+          Private appointments only. Contact us for pricing and availability.
+        </p>
+        <div className="mt-14 flex flex-wrap gap-6 text-sm uppercase tracking-[0.35em] text-white/80">
+          <a href="https://wa.me/2348166394988" className="underline transition hover:text-[#D2C08B]">
+            Request details
+          </a>
+          <Link to="/shop" className="underline transition hover:text-[#D2C08B]">
+            All watches
+          </Link>
         </div>
       </div>
     </section>
